@@ -54,6 +54,9 @@ void MainWindow::checkServiceStatus()
     // Выводим результат в консоль для отладки
     qDebug() << "Output: " << QString::fromStdString(output);
 
+ // Отключаем возможность изменения чекбокса
+    ui->checkBox->setEnabled(false);  // Запрещаем пользователю изменять состояние чекбокса
+
     // Проверяем, содержится ли в выводе строка "ipfw is enabled"
     if (QString::fromStdString(output).contains("ipfw is enabled", Qt::CaseInsensitive)) {
         ui->checkBox->setChecked(true);  // Если сервис включен, отмечаем чекбокс
