@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/icons">
+    <file>icons/zapret.png</file>
+  </qresource>
+</RCC>
