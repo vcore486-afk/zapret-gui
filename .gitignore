@@ -8,3 +8,7 @@
 /moc_mainwindow.o
 /ui_mainwindow.h
 /moc_mainwindow.cpp
+/zapret-gui
+/qrc_resources.o
+/qrc_resources.cpp
+/moc_predefs.h

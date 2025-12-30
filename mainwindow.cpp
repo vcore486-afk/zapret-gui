@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <cstdio>
 #include <fstream>
+#include <QProcess>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,8 +27,30 @@ void MainWindow::on_pushButton_start_clicked()
 void MainWindow::on_pushButton_stop_clicked()
 {
     system("doas service ipfw stop");
+    killDvtws();
     checkServiceStatus();
 }
+
+
+
+void MainWindow::killDvtws()
+{
+    qDebug() << "Попытка убить процесс dvtws через doas...";
+
+    // Запуск через doas
+    int code = QProcess::execute(
+        "/usr/local/bin/doas",
+        QStringList() << "/usr/bin/pkill" << "-9" << "dvtws"
+    );
+
+    // Проверка кода завершения
+    if (code == 0) {
+        qDebug() << "Процесс dvtws успешно завершён.";
+    } else {
+        qDebug() << "Не удалось убить процесс dvtws. Код ошибки:" << code;
+    }
+}
+
 
 void MainWindow::checkServiceStatus()
 {

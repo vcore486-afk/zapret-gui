@@ -17,12 +17,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_pushButton_start_clicked();
 
     void on_pushButton_stop_clicked();
 
-
+    void killDvtws();
 
     void  checkServiceStatus();
 
